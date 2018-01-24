@@ -1,0 +1,26 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Create account form template
+ *
+ * @var $block \Magento\Framework\View\Element\Template
+ */
+?>
+<fieldset class="fieldset create account" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>">
+    <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Additional Information') ?></span></legend><br>
+
+    <div class="field linkedin_profile required">
+        <label for="linkedin_profile" class="label"><span><?php /* @escapeNotVerified */ echo __('Linkedin Profile') ?></span></label>
+        <div class="control">
+            <input type="text" name="linkedin_profile" id="linkedin_profile"  value="<?php echo $block->escapeHtml($block->getFormData()->getLinkedinProfile()) ?>"  title="<?php /* @escapeNotVerified */ echo __('Linkedin Profile') ?>" class="input-text" data-validate="{required:true, 'validate-url':true}" autocomplete="off">
+        </div>
+    </div>
+</fieldset>
