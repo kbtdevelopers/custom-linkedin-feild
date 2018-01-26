@@ -46,7 +46,7 @@ class InstallData implements InstallDataInterface
         $customerSetup = $this->customerSetupFactory->create(['setup' => $setup]);
         $customerSetup->removeAttribute(\Magento\Customer\Model\Customer::ENTITY, "linkedin_profile");
 
-        $customerSetup->addAttribute(\Magento\Customer\Model\Customer::ENTITY, "linkedin_profile",  array(
+        $customerSetup->addAttribute(\Magento\Customer\Model\Customer::ENTITY, "linkedin_profile", array(
             "type"     => "varchar",
             "label"    => "Linkedin Profile",
             "input"    => "text",
@@ -56,7 +56,8 @@ class InstallData implements InstallDataInterface
             "unique"     => true
         ));
 
-        $linkedinProfile = $customerSetup->getEavConfig()->getAttribute(\Magento\Customer\Model\Customer::ENTITY, 'linkedin_profile');
+        $linkedinProfile = $customerSetup->getEavConfig()
+            ->getAttribute(\Magento\Customer\Model\Customer::ENTITY, 'linkedin_profile');
         $usedForms[]="adminhtml_customer";
         $usedForms[]="checkout_register";
         $usedForms[]="customer_account_create";

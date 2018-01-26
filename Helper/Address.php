@@ -17,11 +17,14 @@ class Address extends \Magento\Framework\App\Helper\AbstractHelper
     const XML_PATH_CONDITION = 'redboxdigital_linkedin_config/general/condition';
 
     /**
+     * Scope config
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
      */
     protected $scopeConfig;
 
     /**
+     * Constructor
+     *
      * @param \Magento\Framework\App\Helper\Context $context
      */
     public function __construct(
@@ -55,7 +58,7 @@ class Address extends \Magento\Framework\App\Helper\AbstractHelper
                 break;
         }
 
-        if($isRequiredConfig == 1) {
+        if ($isRequiredConfig == 1) {
             $fieldClass = " required ";
         }
         return $fieldClass;
@@ -69,7 +72,6 @@ class Address extends \Magento\Framework\App\Helper\AbstractHelper
     public function isLinkedinFeildInvisible()
     {
 
-        $fieldClass = "";
         $configStatus = $this->scopeConfig->getValue(self::XML_PATH_CONDITION);
         $isVisibleConfig = 1;
 

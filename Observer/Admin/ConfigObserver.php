@@ -11,49 +11,48 @@ use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Event\Observer as EventObserver;
 use RedboxDigital\Linkedin\Model\Source\Condition;
 
+/**
+ * Class ConfigObserver
+ * @package RedboxDigital\Linkedin\Observer\Admin
+ */
 class ConfigObserver implements ObserverInterface
 {
 
     const XML_PATH_CONDITION = 'redboxdigital_linkedin_config/general/condition';
 
     /**
-     * @var \Magento\Framework\ObjectManagerInterface
-     */
-    protected $_objectManager;
-
-    /**
+     * Attribute Factory
+     *
      * @var \Magento\Customer\Model\AttributeFactory
      */
-    protected $_attrFactory;
+    protected $attrFactory;
 
     /**
+     * Website Factory
+     *
      * @var \Magento\Store\Model\WebsiteFactory
      */
     protected $websiteFactory;
 
     /**
+     * Scope Config
+     *
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
      */
     protected $scopeConfig;
 
     /**
-     * Core registry
-     *
-     * @var \Magento\Framework\Registry
+     * ConfigObserver constructor.
+     * @param \Magento\Customer\Model\AttributeFactory $attrFactory
+     * @param \Magento\Store\Model\WebsiteFactory $websiteFactory
+     * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
      */
-    protected $_coreRegistry;
-
     public function __construct(
-        \Magento\Framework\ObjectManagerInterface $objectManager,
-        \Magento\Framework\Registry $registry,
         \Magento\Customer\Model\AttributeFactory $attrFactory,
         \Magento\Store\Model\WebsiteFactory $websiteFactory,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
-    )
-    {
-        $this->_objectManager = $objectManager;
-        $this->_coreRegistry = $registry;
-        $this->_attrFactory = $attrFactory;
+    ) {
+        $this->attrFactory = $attrFactory;
         $this->websiteFactory = $websiteFactory;
         $this->scopeConfig = $scopeConfig;
     }
@@ -89,7 +88,7 @@ class ConfigObserver implements ObserverInterface
         /* @var $attributeObject \Magento\Customer\Model\Attribute */
         $attributeId = 'linkedin_profile';
         $attributeField = 'attribute_code';
-        $attributeObject = $this->_initAttribute();
+        $attributeObject = $this->initAttribute();
         $attributeObject->load($attributeId, $attributeField);
 
         $isRequiredValue =  $attributeObject->getIsRequired();
@@ -102,20 +101,17 @@ class ConfigObserver implements ObserverInterface
             $attributeObject->addData($data);
             $attributeObject->save();
         }
-
-
     }
-
 
     /**
      * Retrieve customer attribute object
      *
      * @return \Magento\Customer\Model\Attribute
      */
-    protected function _initAttribute()
+    protected function initAttribute()
     {
         /** @var $attribute \Magento\Customer\Model\Attribute */
-        $attribute = $this->_attrFactory->create();
+        $attribute = $this->attrFactory->create();
         $website = $this->websiteFactory->create();
         $attribute->setWebsite($website);
         return $attribute;
