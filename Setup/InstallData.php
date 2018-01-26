@@ -47,12 +47,12 @@ class InstallData implements InstallDataInterface
         $customerSetup->removeAttribute(\Magento\Customer\Model\Customer::ENTITY, "linkedin_profile");
 
         $customerSetup->addAttribute(\Magento\Customer\Model\Customer::ENTITY, "linkedin_profile",  array(
-            "type"     => "static",
+            "type"     => "varchar",
             "label"    => "Linkedin Profile",
             "input"    => "text",
             "visible"  => true,
             "required" => true,
-            "validate_rules" => 'a:2:{s:15:"max_text_length";i:255;s:15:"min_text_length";i:1;}',
+            "validate_rules" => '{"max_text_length":255,"min_text_length":1}',
             "unique"     => true
         ));
 

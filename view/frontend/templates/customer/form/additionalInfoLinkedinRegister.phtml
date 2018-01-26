@@ -18,10 +18,10 @@
 <fieldset class="fieldset create account" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>">
     <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Additional Information') ?></span></legend><br>
 
-    <div class="field linkedin_profile <?php /* @escapeNotVerified */ echo $this->helper('RedboxDigital\Linkedin\Helper\Address')->isLinkedinFeildRequired() ?>">
+    <div class="field linkedin_profile  <?php /* @escapeNotVerified */ echo $this->helper('RedboxDigital\Linkedin\Helper\Address')->isLinkedinFeildRequired() ?>">
         <label for="linkedin_profile" class="label"><span><?php /* @escapeNotVerified */ echo __('Linkedin Profile') ?></span></label>
         <div class="control">
-            <input type="text" name="linkedin_profile" id="linkedin_profile"  value="<?php if (!empty($block->getCustomer()->getCustomAttribute("linkedin_profile"))) { echo $block->getCustomer()->getCustomAttribute("linkedin_profile")->getValue(); } ?>"  title="<?php /* @escapeNotVerified */ echo __('Linkedin Profile') ?>" class="input-text  <?php /* @escapeNotVerified */ echo $this->helper('RedboxDigital\Linkedin\Helper\Address')->isLinkedinFeildRequired() ?> " data-validate="{'validate-url':true}" autocomplete="off">
+            <input type="text" name="linkedin_profile" id="linkedin_profile"  title="<?php /* @escapeNotVerified */ echo __('Linkedin Profile') ?>" class="input-text  <?php /* @escapeNotVerified */ echo $this->helper('RedboxDigital\Linkedin\Helper\Address')->isLinkedinFeildRequired() ?>" data-validate="{'validate-url':true}" autocomplete="off">
         </div>
     </div>
 </fieldset>

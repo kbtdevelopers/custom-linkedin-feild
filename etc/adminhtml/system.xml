@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="redboxdigital" sortOrder="1000">
+            <label>RedboxDigital</label>
+        </tab>
+        <section id="redboxdigital_linkedin_config" translate="label" type="text" sortOrder="1100" showInDefault="1"
+                 showInWebsite="1" showInStore="1">
+            <label>Linkedin Configuration</label>
+            <tab>redboxdigital</tab>
+            <resource>RedboxDigital_Linkedin::config_linkedin</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Field Settings</label>
+                <field id="condition" translate="label" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1">
+                    <label>Visibility</label>
+                    <source_model>RedboxDigital\Linkedin\Model\Source\Condition</source_model>
+                    <comment><![CDATA[Please specify linkedin field is invisible/optional/required in the forms.]]></comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
